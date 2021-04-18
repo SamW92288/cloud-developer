@@ -6,14 +6,12 @@ export const config = {
     "host": "samwdevdb.crw9jykgtcvp.us-east-2.rds.amazonaws.com",
     "dialect": "postgres",
     "aws_region": "us-east-2",
-    "aws_profile": "default",
-    "aws_media_bucket": "udagram-ruttner-dev"
+    "aws_profile": "udagram-sw",
+    "aws_media_bucket": "udagram-samw-dev"
   },
-  "prod": {
-    "username": "",
-    "password": "",
-    "database": "udagram_prod",
-    "host": "",
-    "dialect": "postgres"
+  "aws": {
+    "aws_reigion": "us-east-2",
+    "aws_profile": "samwdevdb",
+    "aws_media_bucket": "SamWDevDB"
   }
 }

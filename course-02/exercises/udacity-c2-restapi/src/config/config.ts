@@ -1,17 +1,19 @@
+import { env } from "process";
+
 export const config = {
   "dev": {
-    "username": "SamWDevDB",
-    "password": "samwdevdb",
-    "database": "SamWDevDB",
-    "host": "samwdevdb.crw9jykgtcvp.us-east-2.rds.amazonaws.com",
+    "username": process.env.POSTGRESS_USERNAME,
+    "password": process.env.POSTGRESS_PASSWORD,
+    "database": process.env.POSTGRESS_DATABASE,
+    "host": process.env.POSTGRESS_HOST,
     "dialect": "postgres",
-    "aws_region": "us-east-2",
-    "aws_profile": "udagram-sw",
-    "aws_media_bucket": "udagram-samw-dev"
+    "aws_region": process.env.AWS_REGION,
+    "aws_profile": process.env.AWS_PROFILE,
+    "aws_media_bucket": process.env.AWS_MEDIA_BUCKET
   },
   "aws": {
-    "aws_reigion": "us-east-2",
-    "aws_profile": "samwdevdb",
-    "aws_media_bucket": "SamWDevDB"
+    "aws_reigion": process.env.AWS_REGION,
+    "aws_profile": process.env.AWS_PROFILE,
+    "aws_media_bucket": process.env.AWS_MEDIA_BUCKET
   }
 }

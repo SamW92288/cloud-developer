@@ -17,7 +17,7 @@ export const config = {
     "aws_media_bucket": process.env.AWS_MEDIA_BUCKET
   },
   "jwt":{
-    "secret:"helloworld"
+    "secret":"helloworld"
   }
 
 }

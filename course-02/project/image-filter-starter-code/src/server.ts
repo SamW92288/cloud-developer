@@ -1,6 +1,6 @@
-import express from 'express';
+import express from 'express'
 import bodyParser from 'body-parser';
-import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import {filterImageFromURL, deleteSavedFiles} from './util/util';
 
 (async () => {
 
@@ -28,6 +28,44 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
   /**************************************************************************** */
+
+
+  app.get("/filteredimage", async (req, res) => {
+    let validImage = false;
+    let filteredImagePath;
+    let tempList: string[] = ['Temp']; 
+
+    var url: string = String(req.query.image_url);
+
+    try {
+
+     let file_extension = ["gif", "jpg", "jpeg", "png", "tiff", "pdf"]
+
+      if (file_extension.indexOf(url.split('.').pop() ) > -1)
+      {
+        validImage = true;
+      }
+
+        if(validImage)
+        {
+          filteredImagePath = await filterImageFromURL(url);
+          res.status(200).sendFile(filteredImagePath);
+
+          // deletes all local files except the file requested
+          deleteSavedFiles(tempList,filteredImagePath);
+        }
+        else
+        {
+          return res.status(422).send("Invalid image type.");
+        }
+        
+      }    
+    catch (e) {
+      
+      res.status(400).send(e);
+
+    }
+  });
 
   //! END @TODO1
   

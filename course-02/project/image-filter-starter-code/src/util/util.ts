@@ -1,5 +1,6 @@
 import fs from 'fs';
 import Jimp = require('jimp');
+import path from 'path';
 
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
@@ -22,13 +23,33 @@ export async function filterImageFromURL(inputURL: string): Promise<string>{
     });
 }
 
-// deleteLocalFiles
-// helper function to delete files on the local disk
-// useful to cleanup after tasks
-// INPUTS
-//    files: Array<string> an array of absolute paths to files
-export async function deleteLocalFiles(files:Array<string>){
-    for( let file of files) {
-        fs.unlinkSync(file);
-    }
-}
+  /** deleteSavedFiles
+   * 
+   * Deletes all local temp files excluding the requested image
+   * 
+ * @param path 
+ * @returns  true | false
+ */
+  export async function deleteSavedFiles(files: string[], omit:string)
+  {
+     let savedFiles: string[] = fs.readdirSync(path.join(__dirname, "tmp")).map((file) => {
+        return path.join(__dirname, "tmp", file);
+      })
+
+      let replacementString ="\\" ;
+      let covertedOmit = 
+      omit.replace(/\//g, replacementString);
+
+        for(const file of savedFiles)
+        {
+            console.log(covertedOmit);
+            console.log(file);
+
+            if(file != covertedOmit)
+            fs.unlinkSync(file);
+        }
+  }
+
+  
+
+  

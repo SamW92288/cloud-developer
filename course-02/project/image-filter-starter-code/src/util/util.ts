@@ -27,25 +27,17 @@ export async function filterImageFromURL(inputURL: string): Promise<string>{
    * 
    * Deletes all local temp files excluding the requested image
    * 
- * @param path 
+ * @param files string[]
  * @returns  true | false
  */
-  export async function deleteSavedFiles(files: string[], omit:string)
+  export async function deleteSavedFiles(files: string[])
   {
      let savedFiles: string[] = fs.readdirSync(path.join(__dirname, "tmp")).map((file) => {
         return path.join(__dirname, "tmp", file);
       })
 
-      let replacementString ="\\" ;
-      let covertedOmit = 
-      omit.replace(/\//g, replacementString);
-
         for(const file of savedFiles)
-        {
-            console.log(covertedOmit);
-            console.log(file);
-
-            if(file != covertedOmit)
+        {        
             fs.unlinkSync(file);
         }
   }

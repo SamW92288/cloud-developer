@@ -49,10 +49,7 @@ import {filterImageFromURL, deleteSavedFiles} from './util/util';
         if(validImage)
         {
           filteredImagePath = await filterImageFromURL(url);
-          res.status(200).sendFile(filteredImagePath);
-
-          // deletes all local files except the file requested
-          deleteSavedFiles(tempList,filteredImagePath);
+          res.status(200).sendFile(filteredImagePath, () => {deleteSavedFiles(tempList);});
         }
         else
         {

@@ -1,0 +1,11 @@
+Github: https://github.com/SamW92288/cloud-developer/tree/master/course-02/project/image-filter-starter-code
+
+EB image-filter URL: http://udagram-imagefilter-sw-dev.us-east-2.elasticbeanstalk.com/
+
+
+Test URLS: 
+
+http://udagram-imageFilter-sw-dev.us-east-2.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg
+
+http://udagram-imageFilter-sw-dev.us-east-2.elasticbeanstalk.com/filteredimage?image_url=https://i.imgur.com/8QhVtf6.jpg
+

@@ -30,7 +30,7 @@ export async function filterImageFromURL(inputURL: string): Promise<string>{
  * @param files string[]
  * @returns  true | false
  */
-  export async function deleteSavedFiles(files: string[])
+  export async function deleteSavedFiles()
   {
      let savedFiles: string[] = fs.readdirSync(path.join(__dirname, "tmp")).map((file) => {
         return path.join(__dirname, "tmp", file);

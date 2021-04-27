@@ -35,7 +35,7 @@ import {filterImageFromURL, deleteSavedFiles} from './util/util';
     let filteredImagePath;
     let tempList: string[] = ['Temp']; 
 
-    var url: string = String(req.query.image_url);
+    let url: string = String(req.query.image_url);
 
     try {
 
@@ -49,7 +49,7 @@ import {filterImageFromURL, deleteSavedFiles} from './util/util';
         if(validImage)
         {
           filteredImagePath = await filterImageFromURL(url);
-          res.status(200).sendFile(filteredImagePath, () => {deleteSavedFiles(tempList);});
+          res.status(200).sendFile(filteredImagePath, () => {deleteSavedFiles();});
         }
         else
         {
